@@ -30,8 +30,8 @@ public class TestMessSendWithMockitoSpy {
         Map<String, String> mapRUS = new HashMap<>();
         mapRUS.put(MessageSenderImpl.IP_ADDRESS_HEADER, IP_RUS);
 
-        String rusText = messageSender.send(mapRUS);
-        Assertions.assertEquals("Добро пожаловать", rusText);
+        String result = messageSender.send(mapRUS);
+        Assertions.assertEquals("Добро пожаловать", result);
     }
 }
 

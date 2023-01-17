@@ -12,10 +12,12 @@ public class TestMessSendWithMockitoSpy {
 
     @Test
     public void sendTestSpy() {
+        final String IP_RUS = "172.";
+
         GeoServiceImpl geoService = Mockito.spy(GeoServiceImpl.class);
         LocalizationServiceImpl localizationService = Mockito.spy(LocalizationServiceImpl.class);
         MessageSenderImpl messageSender = new MessageSenderImpl(geoService, localizationService);
-        final String IP_RUS = "172.";
+
 
         Map<String, String> mapRUS = new HashMap<>();
         mapRUS.put(MessageSenderImpl.IP_ADDRESS_HEADER, IP_RUS);

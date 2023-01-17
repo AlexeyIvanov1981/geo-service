@@ -17,6 +17,9 @@ public class TestMessSendWithMockito {
     GeoServiceImpl geoService;
     LocalizationServiceImpl localizationService;
     MessageSenderImpl messageSender;
+    final String IP = "144.";
+    final String IP_RUS = "172.";
+    final String IP_ENG = "96.";
 
     @BeforeEach
     void init() {
@@ -27,8 +30,6 @@ public class TestMessSendWithMockito {
 
     @Test
     public void sendMessage_null() {
-        final String IP = "144.";
-
         HashMap map = new HashMap<>();
         map.put(MessageSenderImpl.IP_ADDRESS_HEADER, IP);
         Mockito.when(geoService.byIp(IP)).thenReturn(new Location(null, null, null, 0));
@@ -41,8 +42,6 @@ public class TestMessSendWithMockito {
 
     @Test
     public void sendMessage_RUS() {
-        final String IP_RUS = "172.";
-
         Map<String, String> map = new HashMap<>();
         map.put(MessageSenderImpl.IP_ADDRESS_HEADER, IP_RUS);
 
@@ -58,8 +57,6 @@ public class TestMessSendWithMockito {
 
     @Test
     public void sendMessage_USA() {
-        final String IP_ENG = "96.";
-
         Map<String, String> map = new HashMap<>();
         map.put(MessageSenderImpl.IP_ADDRESS_HEADER, IP_ENG);
 

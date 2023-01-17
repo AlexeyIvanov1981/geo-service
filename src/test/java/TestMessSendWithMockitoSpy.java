@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import ru.netology.geo.GeoServiceImpl;
@@ -10,14 +11,21 @@ import java.util.Map;
 
 public class TestMessSendWithMockitoSpy {
 
-    @Test
-    public void sendTestSpy() {
-        final String IP_RUS = "172.";
+    GeoServiceImpl geoService;
+    LocalizationServiceImpl localizationService;
+    final String IP_RUS = "172.";
 
+
+    @BeforeEach
+
+    public void init() {
         GeoServiceImpl geoService = Mockito.spy(GeoServiceImpl.class);
         LocalizationServiceImpl localizationService = Mockito.spy(LocalizationServiceImpl.class);
-        MessageSenderImpl messageSender = new MessageSenderImpl(geoService, localizationService);
+    }
 
+    @Test
+    public void sendTestSpy() {
+        MessageSenderImpl messageSender = new MessageSenderImpl(geoService, localizationService);
 
         Map<String, String> mapRUS = new HashMap<>();
         mapRUS.put(MessageSenderImpl.IP_ADDRESS_HEADER, IP_RUS);
